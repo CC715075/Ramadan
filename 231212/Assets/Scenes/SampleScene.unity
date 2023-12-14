@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 211743330}
   - component: {fileID: 211743329}
   - component: {fileID: 211743328}
+  - component: {fileID: 211743331}
   m_Layer: 5
   m_Name: CanvasTalk
   m_TagString: Untagged
@@ -444,6 +445,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &211743331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211743326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7014785544e5464cb3380e4eaa4b540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chrText: {fileID: 0}
 --- !u!1 &362096507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1022,7 @@ GameObject:
   - component: {fileID: 621340390}
   - component: {fileID: 621340392}
   m_Layer: 5
-  m_Name: ChrImg1
+  m_Name: ChrImgL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1243,8 +1257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 50, y: 0}
-  m_SizeDelta: {x: -100, y: 0}
+  m_AnchoredPosition: {x: 50, y: -25}
+  m_SizeDelta: {x: -100, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &738584121
 MonoBehaviour:
@@ -1266,7 +1280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD55C\uAE00"
+  m_text: "\uB300\uC0AC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d568adda7de4adf4d92244420b7dea58, type: 2}
   m_sharedMaterial: {fileID: 6359237506056757059, guid: d568adda7de4adf4d92244420b7dea58, type: 2}
@@ -1293,10 +1307,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1643,11 +1657,11 @@ RectTransform:
   m_Father: {fileID: 1531968185}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 50, y: 0}
-  m_SizeDelta: {x: -100, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: 0}
+  m_SizeDelta: {x: 1420, y: 250}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &853689120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1668,7 +1682,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD55C\uAE00"
+  m_text: "\uB77C\uB9C8\uCA29"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d568adda7de4adf4d92244420b7dea58, type: 2}
   m_sharedMaterial: {fileID: 6359237506056757059, guid: d568adda7de4adf4d92244420b7dea58, type: 2}
@@ -1677,8 +1691,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294901776
+  m_fontColor: {r: 0.06170082, g: 0, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1695,10 +1709,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -2163,7 +2177,7 @@ GameObject:
   - component: {fileID: 1373212477}
   - component: {fileID: 1373212476}
   m_Layer: 5
-  m_Name: ChrImg2
+  m_Name: ChrImgR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
