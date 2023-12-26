@@ -13,6 +13,7 @@ public class ChatManager : MonoBehaviour
     public Scrollbar scrollBar;
     public Toggle MineToggle;
     AreaScript LastArea;
+    AreaScript Area;
 
 
     public void ReceiveMessage(string text)
@@ -29,7 +30,7 @@ public class ChatManager : MonoBehaviour
     }
 
 
-    public void Chat(bool isSend, string text, string user, Texture2D picture)
+    public void Chat(bool isSend, string text, string Chr, Texture2D picture)
     {
         if (text.Trim() == "") return;
 
@@ -37,7 +38,18 @@ public class ChatManager : MonoBehaviour
 
 
         //보내는 사람은 노랑, 받는 사람은 흰색영역을 크게 만들고 텍스트 대입
-        AreaScript Area = Instantiate(isSend ? YellowArea : WhiteArea).GetComponent<AreaScript>();
+        if (Chr == "시스템")
+        {
+            Area = SystemArea.GetComponent<AreaScript>();
+        }
+        else if (Chr == "주인공")
+        {
+            Area = YellowArea.GetComponent<AreaScript>();
+        }
+        else
+        {
+            Area = WhiteArea.GetComponent<AreaScript>();
+        }
         Area.transform.SetParent(ContentRect.transform, false);
         Area.BoxRect.sizeDelta = new Vector2(600, Area.BoxRect.sizeDelta.y);
         Area.TextRect.GetComponent<Text>().text = text;
@@ -63,7 +75,7 @@ public class ChatManager : MonoBehaviour
         // 현재 것에 분까지 나오는 날짜와 유저이름 대입
         DateTime t = DateTime.Now;
         Area.Time = t.ToString("yyyy-MM-dd-HH-mm");
-        Area.User = user;
+        Area.User = Chr;
 
 
         // 현재 것은 항상 새로운 시간 대입
@@ -92,7 +104,7 @@ public class ChatManager : MonoBehaviour
         // 이전 것과 날짜가 다르면 날짜영역 보이기
         if (LastArea != null && LastArea.Time.Substring(0, 10) != Area.Time.Substring(0, 10))
         {
-            Transform CurDateArea = Instantiate(DateArea).transform;
+            Transform CurDateArea = Instantiate(SystemArea).transform;
             CurDateArea.SetParent(ContentRect.transform, false);
             CurDateArea.SetSiblingIndex(CurDateArea.GetSiblingIndex() - 1);
 
