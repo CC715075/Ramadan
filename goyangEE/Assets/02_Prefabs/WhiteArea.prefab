@@ -431,7 +431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0C1\uB300\uBC29"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6572be92db807ef49846ac89361daaf3, type: 2}
   m_sharedMaterial: {fileID: -708691604541691451, guid: 6572be92db807ef49846ac89361daaf3, type: 2}
@@ -602,8 +602,8 @@ MonoBehaviour:
   UserText: {fileID: 2610297282822817209}
   DateText: {fileID: 0}
   UserImage: {fileID: 2610297280743294198}
-  Time: 
   User: 
+  Time: 0
 --- !u!1 &2876010455227538074
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 325, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2876010455227538049

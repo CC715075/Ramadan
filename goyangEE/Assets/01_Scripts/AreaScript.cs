@@ -10,5 +10,5 @@ public class AreaScript : MonoBehaviour
     public GameObject Tail;
     public TextMeshProUGUI TimeText, UserText, DateText;
     public Image UserImage;
-    public string Time, User;
+    public string User, Time;
 }
