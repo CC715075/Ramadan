@@ -8,6 +8,6 @@ public class DataManager : Singleton<DataManager>
 
     private void Start()
     {
-        dataJWS = CSVReader.Read("DescriptionJWS1");
+        dataJWS = CSVReader.Read("DescriptionJWS");
     }
 }

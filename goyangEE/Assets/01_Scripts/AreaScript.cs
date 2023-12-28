@@ -8,7 +8,7 @@ public class AreaScript : MonoBehaviour
 {
     public RectTransform AreaRect, BoxRect, TextRect;
     public GameObject Tail;
-    public TextMeshProUGUI TimeText, UserText, DateText;
+    public TextMeshProUGUI UserText;
     public Image UserImage;
-    public string User, Time;
+    public string User;
 }

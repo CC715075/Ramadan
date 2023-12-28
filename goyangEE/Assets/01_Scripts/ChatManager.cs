@@ -3,26 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor;
 
 
 
 public class ChatManager : MonoBehaviour
 {
-    public GameObject YellowArea, WhiteArea, SystemArea;
+    public GameObject YellowArea, WhiteArea, SystemArea, WhiteArea1;
     public RectTransform ContentRect;
     public Scrollbar scrollBar;
     public Toggle MineToggle;
     AreaScript LastArea;
     AreaScript Area;
-    string LastChr;
     Texture2D picture;
 
 
     public void ReceiveMessage(string text)
     {
-        if (MineToggle.isOn) Chat("주인공", text, "00000000000");
-        else Chat("상대방", text, "00000000000");
+        if (MineToggle.isOn) Chat("주인공", text, 0);
+        else Chat("상대방", text, 0);
     }
 
 
@@ -33,7 +31,7 @@ public class ChatManager : MonoBehaviour
     }
 
 
-    public void Chat(string chr, string text, string time)
+    public void Chat(string chr, string text, int bgID)
     {
         if (text.Trim() == "") return;
 
@@ -41,18 +39,29 @@ public class ChatManager : MonoBehaviour
 
 
         //보내는 사람은 노랑, 받는 사람은 흰색영역을 크게 만들고 텍스트 대입
-        if (chr == "시스템")
+        if (chr == "1")
         {
-            //Area = Instantiate(SystemArea).GetComponent<AreaScript>();
+            chr = "System";
+            Area = Instantiate(SystemArea).GetComponent<AreaScript>();
         }
-        else if (chr == "주인공")
+        else if (chr == "0")
         {
+            chr = "NAVI747651C9";
             Area = Instantiate(YellowArea).GetComponent<AreaScript>();
+        }
+        else if (chr == "2")
+        {
+            chr = "관리자";
+            Area = Instantiate(WhiteArea).GetComponent<AreaScript>();
+        }
+        else if (chr == "3")
+        {
+            chr = "병사A";
+            Area = Instantiate(WhiteArea1).GetComponent<AreaScript>();
         }
         else
         {
-            Area = Instantiate(WhiteArea).GetComponent<AreaScript>();
-            //picture = 이미지경로
+            Area = Instantiate(SystemArea).GetComponent<AreaScript>();
         }
 
         Area.transform.SetParent(ContentRect.transform, false);
@@ -77,8 +86,7 @@ public class ChatManager : MonoBehaviour
         else Area.BoxRect.sizeDelta = new Vector2(X, Y);
 
 
-        // 현재 것에 시간과 유저이름 대입
-        Area.Time = time;
+        // 현재 것에 유저이름 대입
         Area.User = chr;
         Area.UserText.text = chr;
 
@@ -101,17 +109,6 @@ public class ChatManager : MonoBehaviour
         //    }
         //}
 
-
-        // 이전 것과 날짜가 다르면 날짜영역 보이기
-        if (LastArea != null && LastArea.Time != Area.Time)
-        {
-            Transform CurDateArea = Instantiate(SystemArea).transform;
-            CurDateArea.SetParent(ContentRect.transform, false);
-            CurDateArea.SetSiblingIndex(CurDateArea.GetSiblingIndex() - 1);
-        }
-
-        //마지막으로 말한 캐릭터 기억
-        LastChr = chr;
 
         Fit(Area.BoxRect);
         Fit(Area.AreaRect);

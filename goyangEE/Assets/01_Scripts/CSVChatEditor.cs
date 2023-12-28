@@ -16,22 +16,39 @@ public class CSVChatEditor : MonoBehaviour
     public void CSVChat()
     {
         //CSV 데이터 변수에 저장하기
-        chr = (string)DataManager.Instance.dataJWS[ID]["Chr"];
-        text = (string)DataManager.Instance.dataJWS[ID]["Dialog"];
-        time = DataManager.Instance.dataJWS[ID]["Time"].ToString();
+        chr = (string)DataManager.Instance.dataJWS[ID]["CHARACTER"].ToString();
+        text = (string)DataManager.Instance.dataJWS[ID]["TEXT"];
         BGID = (int)DataManager.Instance.dataJWS[ID]["BGID"];
+        nextID = (int)DataManager.Instance.dataJWS[ID]["NEXT"];
 
-        chatManager.Chat(chr, text, time);
+        chatManager.Chat(chr, text, BGID);
         text = "";
         GUI.FocusControl(null);
 
-        if ((int)DataManager.Instance.dataJWS[ID]["NextID"] == -1)
+        if (nextID == -1)
         {
             ID++;
         }
-        else
+        else if (nextID == 1)
         {
-            ID = (int)DataManager.Instance.dataJWS[ID]["NextID"];
+            ID = nextID;
         }
+    }
+
+    public void Choice1()
+    {
+        ID = 59;
+    }
+    public void Choice2()
+    {
+        ID = 148;
+    }
+    public void Choice3()
+    {
+        ID = 70;
+    }
+    public void Choice4()
+    {
+        ID = 123;
     }
 }
