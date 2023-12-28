@@ -8,14 +8,30 @@ using TMPro;
 
 public class ChatManager : MonoBehaviour
 {
-    public GameObject YellowArea, WhiteArea, SystemArea, WhiteArea1;
+    public GameObject YellowArea, WhiteArea, SystemArea, WhiteArea1, Choice1, Choice2, Choice3, Choice4;
     public RectTransform ContentRect;
     public Scrollbar scrollBar;
     public Toggle MineToggle;
-    AreaScript LastArea;
     AreaScript Area;
-    Texture2D picture;
+    CSVChatEditor csvChatEditor;
+    int CurBG, LastBG;
+    GameObject BG0, BG1, BG2, BG3, BG4, BG5;
 
+    private void Start()
+    {
+        csvChatEditor = GameObject.Find("ChatEditor").GetComponent<CSVChatEditor>();
+        BG0 = GameObject.Find("BG0");
+        BG1 = GameObject.Find("BG1");
+        BG2 = GameObject.Find("BG2");
+        BG3 = GameObject.Find("BG2");
+        BG4 = GameObject.Find("BG4");
+        BG5 = GameObject.Find("BG5");
+        BG1.SetActive(false);
+        BG2.SetActive(false);
+        BG3.SetActive(false);
+        BG4.SetActive(false);
+        BG5.SetActive(false);
+    }
 
     public void ReceiveMessage(string text)
     {
@@ -59,8 +75,29 @@ public class ChatManager : MonoBehaviour
             chr = "병사A";
             Area = Instantiate(WhiteArea1).GetComponent<AreaScript>();
         }
+        else if (chr == "4")
+        {
+            Area = Instantiate(Choice1).GetComponent<AreaScript>();
+            Debug.Log("Choice1");
+        }
+        else if (chr == "5")
+        {
+            Area = Instantiate(Choice2).GetComponent<AreaScript>();
+            Debug.Log("Choice2");
+        }
+        else if (chr == "6")
+        {
+            Area = Instantiate(Choice3).GetComponent<AreaScript>();
+            Debug.Log("Choice3");
+        }
+        else if (chr == "7")
+        {
+            Area = Instantiate(Choice4).GetComponent<AreaScript>();
+            Debug.Log("Choice4");
+        }
         else
         {
+            chr = "System";
             Area = Instantiate(SystemArea).GetComponent<AreaScript>();
         }
 
@@ -91,29 +128,63 @@ public class ChatManager : MonoBehaviour
         Area.UserText.text = chr;
 
 
-        //// 이전 것과 같으면 이전 시간, 꼬리 없애기
-        //bool isSame = LastArea != null && LastArea.Time == Area.Time && LastArea.User == Area.User;
-        //if (isSame) LastArea.TimeText.text = "";
-        //Area.Tail.SetActive(!isSame);
-
-
-        //// 타인이 이전 것과 같으면 이미지, 이름 없애기
-        //if (LastChr != chr)
-        //{
-        //    Area.UserImage.gameObject.SetActive(!isSame);
-        //    Area.UserText.gameObject.SetActive(!isSame);
-        //    Area.UserText.text = Area.User;
-        //    if (chr == "상대방" && picture != null)
-        //    {
-        //        Area.UserImage.sprite = Sprite.Create(picture, new Rect(0, 0, picture.width, picture.height), new Vector2(0.5f, 0.5f));
-        //    }
-        //}
-
-
         Fit(Area.BoxRect);
         Fit(Area.AreaRect);
+
         Fit(ContentRect);
-        LastArea = Area;
+
+        if (chr == "4")
+        {
+            Button btn1 = GameObject.Find("Choice1Box").GetComponent<Button>();
+            btn1.onClick.AddListener(csvChatEditor.Choice1);
+        }
+        else if (chr == "5")
+        {
+            Button btn2 = GameObject.Find("Choice2Box").GetComponent<Button>();
+            btn2.onClick.AddListener(csvChatEditor.Choice2);
+        }
+        else if (chr == "6")
+        {
+            Button btn1 = GameObject.Find("Choice3Box").GetComponent<Button>();
+            btn1.onClick.AddListener(csvChatEditor.Choice3);
+        }
+        else if (chr == "7")
+        {
+            Button btn2 = GameObject.Find("Choice4Box").GetComponent<Button>();
+            btn2.onClick.AddListener(csvChatEditor.Choice4);
+        }
+
+        CurBG = bgID;
+        if (CurBG != LastBG)
+        {
+            if (CurBG == 1)
+            {
+                BG0.SetActive(false);
+                BG1.SetActive(true);
+            }
+            if (CurBG == 2)
+            {
+                BG1.SetActive(false);
+                BG2.SetActive(true);
+            }
+            if (CurBG == 3)
+            {
+                BG2.SetActive(false);
+                BG3.SetActive(true);
+            }
+            if (CurBG == 4)
+            {
+                BG1.SetActive(false);
+                BG3.SetActive(false);
+                BG4.SetActive(true);
+            }
+            if (CurBG == 5)
+            {
+                BG1.SetActive(false);
+                BG5.SetActive(true);
+            }
+        }
+        LastBG = CurBG;
 
         // 스크롤바 내림
         Invoke("ScrollDelay", 0.03f);
